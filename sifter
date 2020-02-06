@@ -12,7 +12,6 @@ usage() {                                      # Function: Print a help message.
 	echo "# sifter	runs the programs bringing up the menu in a cli environment"
 	echo "# sifter	-c will check the exsiting hosts in the hostlist"
 	echo "# sifter	-a '*' must be added with '' and then automattically appends the hostname/IP to host file"
-	echo "# sifter	-e will open the host file for manual editing"
 	echo "# sifter	-m Opens the Modules Menu"
 	echo "# sifter 	-b Runs the Blackwidow Module using the existing host file"
 	echo "# sifter 	-n Runs the Nikto Module using the existing host file"
@@ -21,6 +20,7 @@ usage() {                                      # Function: Print a help message.
 	echo "# sifter	-r Runs the RapidScan module against a given target"
 	echo "# sifter	-p Runs the Nmap Module using the existing host file"
 	echo "# sifter	-i Runs the DnsTwist module against a given target"
+	echo "# sifter	-e Runs the Sn1per module against a target or the host list"
 	echo "# sifter	-f Runs the Flan Vuln-Scanner module against target or host list, can be parsed with target.(eg. sifter -f x.x.x.x)"
 	echo "# sifter 	-t Runs theHarvester against target or host file"
 	echo "# sifter 	-y Runs the Yuki-Chan Module using the existing host file"
@@ -43,16 +43,6 @@ while getopts "a:cembnzdwiptvorsyfhu" options; do            	# Loop: Get the ne
 			figlet -f mini "Checking for live targets..."
 			echo -e "${NC}"
 			./modules/check.sh
-			;;
-
-		e)
-			echo -e "${ORNG}"
-			figlet -f mini "Editing Host List"
-			echo -e "${NC}"
-			sleep 2
-			nano files/host_list.txt
-			sleep 2
-			./modules/menu.sh
 			;;
 
 		a)
@@ -101,9 +91,16 @@ while getopts "a:cembnzdwiptvorsyfhu" options; do            	# Loop: Get the ne
 
 		v)
 			echo -e "${ORNG}"
-			figlet -f mini "DnsTwist"
+			figlet -f mini "Running DnsTwist"
 			echo -e "${NC}"
 			./modules/dnstwist.sh
+			;;
+
+		e)
+			echo -e "${ORNG}"
+			figlet -f mini "Running Sn1per"
+			echo -e "${NC}"
+			./modules/sn1per.sh
 			;;
 
 		o)
@@ -146,14 +143,14 @@ while getopts "a:cembnzdwiptvorsyfhu" options; do            	# Loop: Get the ne
 		  	figlet -f mini "Running theHarvester"
 		  	echo -e "${NC}"
 		  	./modules/harvester.sh
-      		;;
+      			;;
 
  		y)
-      		echo -e "${ORNG}"
-      		figlet -f mini "Running Yuki-Chan"
-      		echo -e "${NC}"
-      		./modules/yuki.sh
-      		;;
+      			echo -e "${ORNG}"
+      			figlet -f mini "Running Yuki-Chan"
+      			echo -e "${NC}"
+      			./modules/yuki.sh
+      			;;
 
 		r)
 			echo -e "${ORNG}"
@@ -173,14 +170,14 @@ while getopts "a:cembnzdwiptvorsyfhu" options; do            	# Loop: Get the ne
 			fi
 			;;
 
-    	u)
-      		echo -e "${ORNG}"
-      		figlet -f mini "Checking for updates"
-					git fetch
-					git pull
-					sudo cp sifter -t /usr/sbin
-      		echo -e "${W}Done!${NC}"
-      		;;
+    		u)
+      			echo -e "${ORNG}"
+      			figlet -f mini "Checking for updates"
+			git fetch
+			git pull
+			sudo cp sifter -t /usr/sbin
+      			echo -e "${W}Done!${NC}"
+      			;;
 
 		h)
 			echo -e "${RED}"
@@ -191,7 +188,7 @@ while getopts "a:cembnzdwiptvorsyfhu" options; do            	# Loop: Get the ne
 
 	esac
 done
-if (( $OPTIND == 1 )); then				# if no option is passed
+if (( $OPTIND == 1 )); then			# if no option is passed
 	./modules/menu.sh		  	# default command is run
 fi
 exit 0
