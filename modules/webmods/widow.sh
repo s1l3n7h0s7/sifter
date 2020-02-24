@@ -20,14 +20,19 @@ do
     case $opts in
         "Crawl the target domain & fuzz all parameters (Verbose enabled)")
             echo -e "${YLW}"
-            cat files/pingtest_pass.txt
-            echo -e "${NC}"
-            echo -e "${W}Please copy and paste in your target site${NC}"
-				read TARGET1
+            if [[ -d files/pingtest_pass.txt ]]; then
+                echo -e "${YLW}"
+                cat files/pingtest_pass.txt
+                echo -e "${NC}"
+                echo -e "${W}Please copy and paste in your target site${NC}"
+            else
+                echo -e "${W}Please enter your target site with 'http/s://'${NC}"
+            fi            
+			read TARGET1
             echo -e "${W}How many levels would you like to crawl?${NC}"
-				read TARGET2
+			read TARGET2
             echo -e "${W}Would you like to fuzz all possible parameters for OWASP vulns? (y/n)${NC}"
-				read TARGET3
+			read TARGET3
 			echo -e "${LP}Running Blackwidow with the following command, 'blackwidow -u $TARGET1 -l $TARGET2 -s $TARGET3 -v y'${NC}"
 				sleep 5
 			sudo blackwidow -u ${TARGET1} -l ${TARGET2} -s ${TARGET3} -v y | tee /opt/sifter/results/Blackwidow/${TARGET}.txt

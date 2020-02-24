@@ -25,7 +25,7 @@ single_scan(){
     read TIME
     sleep 1
     theHarvester -d ${TARGET} -S ${TIME} -s -e 8.8.8.8 -n -c -b google -f /opt/sifter/results/results_${name}.html
-    echo -e "${RED}Results saved to /opt/sifter/results/Harvester/results_${name}.html${NC}"
+    echo -e "${RED}Results saved to /opt/sifter/results/Harvester/results_${TARGET}.html${NC}"
 }
 
 echo -e "${ORNG}theHarvester${NC}"

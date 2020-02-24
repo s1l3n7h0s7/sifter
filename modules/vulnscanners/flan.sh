@@ -24,9 +24,11 @@ if (( $OPTIND == 1 )); then				# if no option is passed
 	if [ $TARGET == y ]; then
 	        sudo make start
 	else
-	        nano shared/ips.txt
+	        sudo nano shared/ips.txt
 	        sleep 1
 	        sudo make start
 	fi
 	echo -e "${ORNG}Done${NC}"
 fi
+cd /opt/sifter
+./modules/module.sh

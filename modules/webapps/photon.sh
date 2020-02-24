@@ -14,12 +14,17 @@ single_target(){
     listing
     echo -e "${W}Please enter your target${NC}"
     read TARGET
+    if [[ -d /opt/sifter/results/Photon/${TARGET} ]]; then
+        echo ""
+    else
+        mkdir /opt/sifter/results/Photon/${TARGET}
+    fi
     echo -e "${W}How many levels would you like to crawl?: ${NC}"
     read LEVEL
     echo -e "${W}How many threads would you like to run?: ${NC}"
     read THREADS
     sleep 1
-    python3 /opt/Photon/photon.py -u ${TARGET} -l ${LEVEL} -t ${THREADS} -v --dns --keys -o /opt/sifter/results/Photon
+    python3 /opt/Photon/photon.py -u ${TARGET} -l ${LEVEL} -t ${THREADS} -v --dns --keys -o /opt/sifter/results/Photon/${TARGET}
 }
 multi_target(){
     for name in `cat files/pingtest.pass`
@@ -29,7 +34,12 @@ multi_target(){
             echo -e "${W}How many threads would you like to run?: ${NC}"
             read THREADS
             sleep 1
-            python3 /opt/Photon/photon.py -u ${name} -l ${LEVEL} -t ${THREADS} -v --dns --keys -o /opt/sifter/results/Photon
+            if [[ -d /opt/sifter/results/Photon/${name} ]]; then
+                echo ""
+            else
+                mkdir /opt/sifter/results/Photon/${name}
+            fi
+            python3 /opt/Photon/photon.py -u ${name} -l ${LEVEL} -t ${THREADS} -v --dns --keys -o /opt/sifter/results/Photon/${name}
         done
 }
 

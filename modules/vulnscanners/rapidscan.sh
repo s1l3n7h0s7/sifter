@@ -24,5 +24,5 @@ listing
 sleep 1
 echo "==================================================================================="
 xterm rapidscan &
-sleep 1
+echo -e "${W}When ready hit enter${NC}"
 ./modules/module.sh

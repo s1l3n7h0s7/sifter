@@ -1,65 +1,526 @@
 #!/bin/bash
-RED='\033[0;31m'
-NC='\033[0m'
 ORNG='\033[0;33m'
+NC='\033[0m'
 W='\033[1;37m'
-ARG=$2                                        # IP addition argument
+LP='\033[1;35m'
+YLW='\033[1;33m'
+LBBLUE='\e[104m'
+RED='\033[0;31m'
+ARG=$2                                         # IP addition argument
+# Help Menu
 usage() {                                      # Function: Print a help message.
 	echo "Sifter Help Menu"
 	echo "*****************"
 	echo "+"
 	echo "+"
-	echo "# sifter	  runs the programs bringing up the menu in a cli environment"
-	echo "# sifter   -c	will check the exsiting hosts in the hostlist"
-	echo "# sifter   -a '*'  must be added with '' and then automattically appends the hostname/IP to host file"
-	echo "# sifter   -e	will open the host file for manual editing"
-	echo "# sifter   -m	Opens the Modules Menu"
-	echo "# sifter   -b	Runs the Blackwidow Module using the existing host file"
-	echo "# sifter   -n	Runs the Nikto Module using the existing host file"
-	echo "# sifter   -d	Runs the Dirbuster Module using the existing host file"
-	echo "# sifter   -w	Runs the WPScan Module using the existing host file"
-	echo "# sifter	 -r	Runs the RapidScan module against a given target"
-	echo "# sifter   -p	Runs the Nmap Module using the existing host file"
-	echo "# sifter	 -f	Runs the Flan Vuln-Scanner module against target or host list"
-	echo "# sifter   -t	Runs theHarvester against target or host file"
-	echo "# sifter   -y	Runs the Yuki-Chan Module using the existing host file"
-	echo "# sifter	 -s	Runs the Sublist3r module against targets"
-	echo "# sifter	 -z	Runs the AttackSurfaceMapper module against a given target"
-	echo "# sifter	 -o	Runs the Photon module against target or host list"
-	echo "# sifter	 -u	Checks for any updates on Github"
-	echo "# sifter   -h	This Help Menu" 1>&2
+	echo "# sifter	runs the programs bringing up the menu in a cli environment"
+	echo "# sifter	-c will check the exsiting hosts in the hostlist"
+	echo "# sifter	-a '*' must be added with '' and then automattically appends the hostname/IP to host file"
+	echo "# sifter	-e Opens the Exploitation Module"
+	echo "# sifter	-i Opens the Info-based Module menu"
+	echo "# sifter 	-d Opens the Domain Focused Modules"
+	echo "# sifter 	-n Opens the Network Mapping Modules menu"
+	echo "# sifter	-w Opens the Website Focused Modules"
+	echo "# sifter	-wa Opens the Web-App Focused Module menu"
+	echo "# sifter	-v Opens the Vulnerability Scanning Module Menu"
+	echo "# sifter	-u Checks for any updates on Github"
+	echo "# sifter	-h This Help Menu" 1>&2
 }
-#update() {
-#	figlet -f mini "Checking for updates"
-#	cd /opt
-#	sudo rm -rf sifter
-#	cd sifter && sudo chmod +x install.sh
-#	sudo ./install.sh
-#	echo -e "${W}Done!${NC}"
-#}
+# Information Modules
+cred_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Info-Focused Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+          options=("theHarvester" "SniffingBear" "Osmedeus" "ReconSpider" "Back" "Quit") # "Sunny-Honey \n ssh HoneyPot"
+          select opt in "${options[@]}"
+          do
+                  case $opt in
+                            "theHarvester")
+                                ./modules/credmods/harvester.sh
+                                ;;
+
+                            "SniffingBear")
+                                ./modules/credmods/s_bear.sh
+                                ;;
+
+                            "Osmedeus")
+                                ./modules/credmods/osmedeus.sh
+                                ;;
+
+                            "ReconSpider")
+                                ./modules/credmods/rspider.sh
+                                ;;
+
+                            "Back")
+                                modules
+                                ;;
+
+                            "Quit")
+                                exit 0
+                                ;;
+                    esac
+            done
+            echo -e "${NC}"
+}
+# Domain Modules
+dom_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Domain-Focused Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+          options=("DnsTwist" "DomainFuzz" "Sublist3r" "Back" "Quit")
+          select opt in "${options[@]}"
+          do
+                  case $opt in
+                            "DnsTwist")
+                                ./modules/dommods/dnstwist.sh
+                                ;;
+
+                            "DomainFuzz")
+                                ./modules/dommods/domainfuzz.sh
+                                ;;
+
+                            "Sublist3r")
+                                ./modules/dommods/sublist3r.sh
+                                ;;
+
+                            "Back")
+                                modules
+                                ;;
+
+                            "Quit")
+                                exit 0
+                                ;;
+                    esac
+            done
+            echo -e "${NC}"
+}
+# Network Modules
+net_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Network-Focused Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+          options=("nMap" "AttackSurfaceMapper" "Armory" "aSnip" "Back"  "Quit")
+          select opt in "${options[@]}"
+          do
+                  case $opt in
+                            "nMap")
+                                ./modules/netmods/nmap.sh
+                                ;;
+
+                            "AttackSurfaceMapper")
+                                ./modules/netmods/asm.sh
+                                ;;
+
+                            "Armory")
+                                ./modules/netmods/armory.sh
+                                ;;
+
+                            "aSnip")
+                                ./modules/netmods/asnip.sh
+                                ;;
+
+                            "Back")
+                                modules
+                                ;;
+
+                            "Quit")
+                                exit 0
+                                ;;
+                    esac
+            done
+            echo -e "${NC}"
+}
+# Vulnerability Scanners
+vuln_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Vulnerability-Focused Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+          options=("Flan" "RapidScan" "Yuki-Chan" "Back" "Quit")
+          select opt in "${options[@]}"
+          do
+                  case $opt in
+                            "Flan")
+                                ./modules/vulnscanners/flan.sh
+                                ;;
+
+                            "RapidScan")
+                                ./modules/vulnscanners/rapidscan.sh
+                                ;;
+
+                            "Yuki-Chan")
+                                ./modules/vulnscanners/yuki.sh
+                                ;;
+
+                            "Back")
+                                modules
+                                ;;
+
+                            "Quit")
+                                exit 0
+                                ;;
+                    esac
+            done
+            echo -e "${NC}"
+}
+# Web-Focused Modules
+web_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Web-Focused Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+          options=("Konan" "Nikto" "BlackWidow" "WPScan" "Back" "Quit")
+          select opt in "${options[@]}"
+          do
+                  case $opt in
+                            "Konan")
+                                ./modules/webmods/konan.sh
+                                ;;
+
+                            "Nikto")
+                                ./modules/webmods/nikto.sh
+                                ;;
+
+                            "BlackWidow")
+                                ./modules/webmods/widow.sh
+                                ;;
+
+                            "WPScan")
+                                ./modules/webmods/wpscan.sh
+                                ;;
+
+                            "Back")
+                                modules
+                                ;;
+
+                            "Quit")
+                                exit 0 
+                                ;;
+                    esac
+            done
+            echo -e "${NC}"
+}
+# Exploitation Modules
+ex_mods(){
+  echo -e "${RED}"
+  figlet -f mini "Exploitation Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+        options=("ActiveReign" "TigerShark" "iSpy" "ShodanSploit" "Back" "Quit")
+        select opt in "${options[@]}"
+        do
+                case $opt in
+			              "ActiveReign")
+			                    echo -e "${YLW}ActiveReign is a Network-Attack toolkit${NC}"
+                                echo -e "${W}Would you like to continue?(y/n)${NC}"
+                                read M_ANS
+                                if [[ ${M_ANS} == 'y' ]]; then
+                                    ./modules/exmods/ar3.sh
+                                else
+                                    exmods
+                                fi
+			                    ;;
+
+                          "TigerShark")
+                                echo -e "${YLW}TigerShark is a multi-tooled phishing framework${NC}"
+                                echo -e "${W}Would you like to continue?(y/n)${NC}"
+                                read M_ANS
+                                if [[ ${M_ANS} == 'y' ]]; then
+                                    ./modules/exmods/tiger.sh
+                                else
+                                    exmods
+                                fi
+                                ;;
+
+			              "iSpy")
+                                echo -e "${YLW}iSpy is a Microsft 'blue' vuln exploitation framework${NC}"
+                                echo -e "${W}Would you like to continue?(y/n)${NC}"
+                                read M_ANS
+                                if [[ ${M_ANS} == 'y' ]]; then
+                                    ./modules/exmods/ispy.sh
+                                else
+                                    exmods
+			                    fi
+			                    ;;
+
+                          "ShodanSploit")
+                                echo -e "${YLW}ShodanSploit allows for shodan searches to be done in the terminal${NC}"
+                                echo -e "${W}Would you like to continue?(y/n)${NC}"
+                                read M_ANS
+                                if [[ ${M_ANS} == 'y' ]]; then
+                                    ./modules/exmods/ssploit.sh
+                                else
+                                    exmods
+			                    fi
+                                ;;
+
+                          "NekoBot")
+                                echo -e "${YLW}NekoBot is a Web-Shell exploitation framework${NC}"
+                                echo -e "${W}Would you like to continue?(y/n)${NC}"
+                                read M_ANS
+                                if [[ ${M_ANS} == 'y' ]]; then
+                                    ./modules/exmods/nekobot.sh
+                                else
+                                    exmods
+			                    fi
+                                ;;
+
+			              "Back")
+                                modules
+                                ;;
+
+                           "Quit")
+                                exit 0
+                                ;;
+                esac
+        done
+    echo -e "${NC}"
+}
+# Web-App Modules
+webapps(){
+  echo -e "${RED}"
+  figlet -f mini "WebApp Modules"
+  echo -e "${ORNG}"
+  PS3='What tool would you like to use?'
+        options=("Sitadel" "wafw00f" "Photon" "Back" "Quit")
+        select opt in "${options[@]}"
+        do
+                case $opt in
+                        "Sitadel")
+                            ./modules/webapps/sitadel.sh
+                            ;;
+
+                        "wafw00f")
+                            ./modules/webapps/wafw00f.sh
+                            ;;
+
+                        "Photon")
+                            /modules/webapps/photon.sh
+                            ;;
+
+                        "Back")
+                            modules
+                            ;;
+
+                        "Quit")
+                            exit 0
+                            ;;
+                esac
+        done
+    echo -e "${NC}"
+}
+# Host Check
+check_hosts(){
+    echo -e "${ORNG}Host Check${NC}"
+    echo -e "${ORNG}***********${NC}"
+    rm files/pingtest_raw.pass files/pingtest.pass files/pingtest_pass.txt
+
+    for name in `cat files/host_list.txt`
+
+            do
+                ping -c 1 $name
+                    if [[ $? == 0 ]]; then
+                        echo -e "${LP}=================="
+                        echo -e "\e[95m$name Alive\e[0m" && echo $name >> files/pingtest_raw.pass
+                        echo -e "${LP}==================${NC}"
+                    else
+                        echo -e "${RED}=================="
+                        echo -e "\e[1;31m$name Dead\e[0m" && echo $name >> files/pingtest_raw.fail
+                        echo -e "${RED}==================${NC}"                        
+                    fi
+            done
+
+                sleep 5
+
+            echo "============================================================================================================================="
+
+            echo -e "\e[95mPingtest_Pass\e[0m"
+            echo $'\e[95m*************\e[0m'
+	        cat files/pingtest_raw.pass | sort | uniq > files/pingtest.pass
+            echo -e "${YLW}"
+	        cat files/pingtest.pass
+	        echo -e "${NC}"
+	        sed -e 's/^/http:\/\//' files/pingtest.pass > files/pingtest_pass.txt
+
+            echo "============================================================================================================================="
+
+            echo -e "\e[1;31mPingtest_Fail\e[0m"
+            echo $'\e[1;31m*************\e[0m'
+            cat files/pingtest_raw.fail | sort | uniq > files/pingtest.fail
+            echo -e "${YLW}"
+	        cat files/pingtest.fail
+	        echo -e "${NC}"
+            sleep 5
+            menu
+}
+# List Arguments for Options Below
+ip_add() {
+  echo -e "${W}Please enter your target:${NC}"
+  read IP_ANS
+  sleep 1
+  echo "$IP_ANS" >> files/host_list.txt
+  ip_q
+}
+ip_q() {
+  echo -e "${W}Would you like to add another?(y/n)${NC}"
+read ANS
+sleep 1
+if [[ $ANS == y ]]; then
+  ip_add
+else
+  menu
+fi
+}
+# List Editor
+list_editor(){
+    echo -e "${RED}List Editor${NC}"
+    echo -e "${RED}************${YLW}"
+    cat files/host_list.txt
+    echo -e "${ORNG}"
+            PS3='What would you like to do?'
+            options=("Check" "List" "Add" "Remove" "Back")
+            select opt in "${options[@]}"
+            do
+                    case $opt in
+                            "Check")
+                                check_hosts
+                                sleep 5
+                                list_editor
+                                ;;
+
+                            "Add")
+                                echo -e "${W}Type the IP or hostname you would like to add${NC}"
+			        sleep 5
+                                read LTARGET
+                                echo "$LTARGET" >> files/host_list.txt
+                                echo -e "${W}Target Added!${NC}"
+                                ip_q
+                                ;;
+
+                            "Remove")
+                                nano files/host_list.txt
+                                echo -e "${W}Target Removed!${NC}"
+                                sleep 5
+                                list_editor
+                                ;;
+
+                            "Back")
+                                menu
+                                ;;
+                    esac
+            done
+    echo -e "${NC}"
+}
+# Module Menu
+modules(){
+    echo -e "${RED}Modules${NC}"
+    echo -e "${RED}*******${NC}"
+    echo -e "${ORNG}"
+    PS3='What would you like to do?'
+            options=("Info-Focused Modules" "Domain-Focused Modules" "Network-Focused Modules" "Web-Focused Modules" "Vulnerability-Focused Modules" "Exploitation(Beta)" "WebApp-Focused Modules" "Quit")
+            select opt in "${options[@]}"
+            do
+                    case $opt in
+                            "Info-Focused Modules")
+                                cred_mods
+                                ;;
+
+                            "Domain-Focused Modules")
+                                dom_mods
+                                ;;
+
+                            "Network-Focused Modules")
+                                net_mods
+                                ;;
+
+                            "Web-Focused Modules")
+                                web_mods
+                                ;;
+
+                            "Vulnerability-Focused Modules")
+                                vuln_mods
+                                ;;
+
+                            "Exploitation(Beta)")
+                                ex_mods
+                                ;;
+
+			    "WebApp-Focused Modules")
+			        webapps
+			        ;;
+
+                            "Quit")
+                                exit 0
+                                ;;
+                    esac
+            done
+    echo -e "${NC}"
+}
+# Menu
+menu(){
+    echo -e "${ORNG}"
+    figlet -f big "'..SifteR..'"
+    echo -e "${LP}"
+    figlet -f small "*s1l3nt78*"
+    echo -e "${RED}////////========TopaZ_(v2.5)========\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\${NC}"
+    echo -e "${W}==Hit Ctrl + c at any time to quit Sifter==${NC}"
+    arg=$1
+    echo -e "${ORNG}"
+    PS3='What would you like to do?'
+            options=("Check Hosts" "Edit Host List" "Parse Results to Modules" "Update" "Quit")
+            select opt in "${options[@]}"
+            do
+                case $opt in
+                    "Check Hosts")
+                        check_hosts
+                        ;;
+
+                    "Edit Host List")
+                        list_editor
+                        ;;
+
+                    "Parse Results to Modules")
+                        modules
+                        ;;
+
+		    "Update")
+		        update
+                        ;;
+
+                    "Quit")
+                        exit 0
+                        ;;
+                esac
+            done
+    echo -e "${NC}"
+}
+# Update
+update(){
+    echo -e "${ORNG}"
+    figlet -f mini "Checking for updates"
+	git fetch
+	git pull
+	sudo ./install.sh
+	sudo cp sifter -t /usr/sbin
+	sudo chmod +x -R /opt/sifter/modules
+	sudo chmod +x /usr/sbin/sifter
+    sudo chown $USER:$USER -R /opt/sifter /usr/sbin/sifter
+    echo -e "${W}Done!${NC}"
+}
 
 cd /opt/sifter
-
-while getopts "a:cembnzdwptvorsyfhu" options; do            	# Loop: Get the next option;
-							# use silent error checking;
-							# option a takes 1 arguments.
-	case "${options}" in
-
+while getopts "a:wandwiecvuh" options; do            	# Loop: Get the next option;
+	case "${options}" in                                # use silent error checking;
+                                                        # option a takes 1 arguments.
 		c)
-			echo -e "${ORNG}"
+			echo -e "${YLW}"
 			figlet -f mini "Checking for live targets..."
 			echo -e "${NC}"
-			./modules/check.sh
-			;;
-
-		e)
-			echo -e "${ORNG}"
-			figlet -f mini "Editing Host List"
-			echo -e "${NC}"
-			sleep 2
-			nano files/host_list.txt
-			sleep 2
-			./modules/menu.sh
+			./modules/netmods/check.sh
+            		modules
 			;;
 
 		a)
@@ -68,112 +529,61 @@ while getopts "a:cembnzdwptvorsyfhu" options; do            	# Loop: Get the nex
 			echo -e "${NC}"
 			echo "$ARG" >> files/host_list.txt
 			sleep 2
-			./modules/menu.sh
+			modules
 			;;
 
-		m)
-			echo -e "${ORNG}"
-			figlet -f mini "Module Menu"
+		i)
+			echo -e "${LP}"
+			figlet -f mini "Info Gatherers"
 			echo -e "${NC}"
-			./modules/module.sh
-			;;
-
-		b)
-			echo -e "${ORNG}"
-			figlet -f mini "Running BlackWidow"
-			echo -e "${NC}"
-			./modules/widow.sh
-			;;
-
-		n)
-			echo -e "${ORNG}"
-			figlet -f mini "Running Nikto"
-			echo -e "${NC}"
-			./modules/nikto.sh
-			;;
-
-		p)
-			echo -e "${ORNG}"
-			figlet -f mini "Running Nmap"
-			echo -e "${NC}"
-			./modules/nmap.sh
+			cred_mods
 			;;
 
 		d)
-			echo -e "${ORNG}"
-			figlet -f mini "Running Dirbuster"
+			echo -e "${LP}"
+			figlet -f mini "Domain-Fuzzers"
 			echo -e "${NC}"
-			./modules/dirb.sh
+			dom_mods
+			;;
+
+		e)
+			echo -e "${LP}"
+			figlet -f mini "Exploitative Modules"
+			echo -e "${NC}"
+			ex_mods
+			;;
+
+		n)
+			echo -e "${LP}"
+			figlet -f mini "Network Mappers"
+			echo -e "${NC}"
+			net_mods
 			;;
 
 		v)
-			echo -e "${ORNG}"
-			figlet -f mini "DnsTwist"
+			echo -e "${LP}"
+			figlet -f mini "Vulnerability Scanners"
 			echo -e "${NC}"
-			./modules/dnstwist.sh
+			vuln_mods
 			;;
 
-		o)
-			echo -e "${ORNG}"
-			figlet -f mini "Running Photon"
+		wa)
+			echo -e "${LP}"
+			figlet -f mini "Web-App Testers"
 			echo -e "${NC}"
-			./modules/photon.sh
-			;;
-
-		s)
-			echo -e "${ORNG}"
-			figlet -f mini "Running Sublist3r"
-			echo -e "${NC}"
-			;;
-
-		z)
-			echo -e "${ORNG}"
-			figlet -f mini "Running AttackSurfaceMapper"
-			echo -e "${NC}"
-			./modules/asm.sh
+			webapps
 			;;
 
 		w)
-			echo -e "${ORNG}"
-			figlet -f mini "Running WPScan"
+			echo -e "${LP}"
+			figlet -f mini "Web Recon"
 			echo -e "${NC}"
-			./modules/wpscan.sh
+			web_mods
 			;;
 
-		t)
-		  	echo -e "${ORNG}"
-		  	figlet -f mini "Running theHarvester"
-		  	echo -e "${NC}"
-		  	./modules/harvester.sh
-      		;;
-
- 		y)
-      		echo -e "${ORNG}"
-      		figlet -f mini "Running Yuki-Chan"
-      		echo -e "${NC}"
-      		./modules/yuki.sh
-      		;;
-
-		r)
-			echo -e "${ORNG}"
-			figlet -f mini "RapidscaN"
-			echo -e "${NC}"
-			./modules/rapidscan.sh
-			;;
-
-		f)
-			echo -e "${ORNG}"
-			figlet -f mini "Flan"
-			echo -e "${NC}"
-			./modules/flan.sh
-			;;
-
-    	u)
-      		echo -e "${ORNG}"
-      		figlet -f mini "Checking for updates"
-      		git pull
-      		echo -e "${W}Done!${NC}"
-      		;;
+    		u)
+      			update
+      			;;
 
 		h)
 			echo -e "${RED}"
@@ -185,6 +595,6 @@ while getopts "a:cembnzdwptvorsyfhu" options; do            	# Loop: Get the nex
 	esac
 done
 if (( $OPTIND == 1 )); then				# if no option is passed
-	./modules/menu.sh		  	# default command is run
+	menu		  	                    # default command is run
 fi
 exit 0
