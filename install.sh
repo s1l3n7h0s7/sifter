@@ -222,7 +222,7 @@ t8(){
 		sudo chmod +x wafninja joomscan yuki.sh install-perl-module.sh
 		sudo ./install-perl-module.sh
 		sudo chmod +x wafninja joomscan yuki.sh #install-perl-module.sh
-		sudo ./install-perl-module.sh
+		#sudo ./install-perl-module.sh
 	fi
 }
 
