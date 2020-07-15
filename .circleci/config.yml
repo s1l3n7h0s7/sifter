@@ -67,11 +67,11 @@ jobs:
             cd /opt/sifter
             OUT='read INSTALL_PROMPT'                                                                                 # Original Dependancy Installion Validation Argument
             INS='#read INSTALL_PROMPT'                                                                                # CircleCI Automatic Installation Acceptance
-            sudo sed -i "s/${OUT}/${INS}/g" install.sh
+            sudo sed -i "s/${OUT}/${INS}/g" .circleci/circle_build.ci                                         # .circleci/circle_build.ci (CircleCI Installer)
             
             OSOUT='read INOPT'                                                                                        # Osmedeus Install Option Argument
             OSIN='l | read INOPT'                                                                                     # Osmedeus Install Option Set to 'First-Run Install'
-            sudo sed -i "s/${OSOUT}/${OSIN}/g" install.sh
+            sudo sed -i "s/${OSOUT}/${OSIN}/g" .circleci/circle_build.ci                                      # .circleci/circle_build.ci (CircleCI Installer)
 
 
       - run: 
