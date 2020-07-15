@@ -262,8 +262,8 @@ t10(){
 		sudo git clone https://github.com/Ekultek/Zeus-Scanner
 		cd Zeus-Scanner
 		sudo docker pull s1l3nt78/zeus
-		echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
-		read ID
+		#echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
+		#read ID
 		sudo docker tag ${ID} zeus
 	fi
 }
@@ -1229,7 +1229,7 @@ t4										# BlackWidow
 t5										# BFAC
 t6										# RapidScan
 t7										# ShodanSploit
-#t8										# Yuki-Chan
+#t8									# Yuki-Chan
 t9										# ReconSpider
 t10										# Zeus
 t11										# EoP
@@ -1238,7 +1238,7 @@ t13										# AttackSurfaceMapper
 t14										# ActiveReign
 t15										# iSpy
 t16										# Sitadel
-#t17										# Osmedeus
+#t17									# Osmedeus
 t18										# NekoBot
 t19										# aSnip
 t20										# Armory
@@ -1258,7 +1258,7 @@ t33										# Impulse
 t34										# CredHarvester
 t35										# SayDog
 t36										# Dork-Eye
-#t37										# Mentalist
+#t37									# Mentalist
 t38										# dCipher
 t39										# Honey-Tel
 t40										# XSS-Strike
