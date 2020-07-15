@@ -16,5 +16,4 @@ def showbanner():
          /____  >|___|____/______  /___|  /__|  /____/ \______  /
               \/    ''' + CGREENBG2 + "AdamantiuM" + CEND + " " + CVIOLET + '''  \/     \/        ''' + UGREEN + "Ver:" + CBLUE + "8.2" + CEND + CVIOLET + '''       \/    ''' + CEND)
         
-        exit
 showbanner()

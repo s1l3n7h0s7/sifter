@@ -149,7 +149,7 @@ t5(){
 		cd /opt/
 		sudo git clone https://github.com/mazen160/bfac.git
 		cd bfac
-		sudo python setup.py install
+		sudo python2 setup.py install
 	fi
 }
 
@@ -219,8 +219,10 @@ t8(){
 		sudo pip3 install wget
 		sudo chmod +x Module --recursive
 		sudo chown $USER:$USER Module --recursive
+		sudo chmod +x wafninja joomscan yuki.sh install-perl-module.sh
+		sudo ./install-perl-module.sh
 		sudo chmod +x wafninja joomscan yuki.sh #install-perl-module.sh
-		#sudo ./install-perl-module.sh
+		sudo ./install-perl-module.sh
 	fi
 }
 
@@ -259,9 +261,9 @@ t10(){
 		sudo git clone https://github.com/Ekultek/Zeus-Scanner
 		cd Zeus-Scanner
 		sudo docker pull s1l3nt78/zeus
-		#echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
-		#read ID
-		sudo docker tag s1l3nt78/zeus zeus
+		echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
+		read ID
+		sudo docker tag ${ID} zeus
 	fi
 }
 
@@ -321,24 +323,24 @@ t13(){
 		if [[ ! -d 'venv' ]]; then
 			sudo python3 -m venv venv
 			source venv/bin/activate
-			sudo venv/bin/pip3 install wheel
-			sudo venv/bin/pip3 install -r requirements.txt
+			sudo ./venv/bin/pip3 install wheel
+			sudo ./venv/bin/pip3 install -r requirements.txt
 		fi
 		CHK=$(sudo git fetch && sudo git pull)
 		if [[ ${CHK} == "Already up to date." ]]; then
 			sleep 1
 		else
 			source venv/bin/activate
-			sudo venv/bin/pip3 install wheel
-			sudo venv/bin/pip3 install -r requirements.txt
+			sudo ./venv/bin/pip3 install wheel
+			sudo ./venv/bin/pip3 install -r requirements.txt
 		fi
 	else
 		cd /opt
 		sudo git clone https://github.com/superhedgy/AttackSurfaceMapper
 		cd /opt/AttackSurfaceMapper
 		source venv/bin/activate
-		sudo venv/bin/pip3 install wheel
-		sudo venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/pip3 install wheel
+		sudo ./venv/bin/pip3 install -r requirements.txt
 		if [[ -f '/opt/sifter/extras/.asm' ]]; then
 			sudo cp /opt/sifter/extras/.asm -t /usr/sbin
 			sudo mv /opt/sifter/extras/.asm -t /opt/AttackSurfaceMapper
@@ -945,20 +947,23 @@ t43(){
 		if [[ ! -d 'venv' ]]; then
 			sudo python3 -m venv venv
 			source venv/bin/activate
-			sudo venv/bin/pip3 install wheel
-			sudo venv/bin/pip3 install -r requirements.txt
+			sudo ./venv/bin/pip3 install wheel
+			sudo ./venv/bin/pip3 install -r requirements.txt
+			sudo ./venv/bin/python3 setup.py install
 		fi
 		sudo git fetch && sudo git pull
 		source venv/bin/activate
-		sudo venv/bin/pip3 install wheel
-		sudo venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/pip3 install wheel
+		sudo ./venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/python3 setup.py install
 	else
 		cd /opt
 		sudo git clone https://github.com/elceef/dnstwist.git
 		sudo python3 -m venv venv
 		source venv/bin/activate
-		sudo venv/bin/pip3 install wheel
-		sudo venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/pip3 install wheel
+		sudo ./venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/python3 setup.py install
 	fi
 }
 ##################
@@ -1042,8 +1047,8 @@ t47(){
 		cd /opt/PowerHub
 		sudo python3 -m venv env
 		source env/bin/activate
-		sudo env/bin/pip3 install wheel
-		sudo env/bin/pip3 install -r requirements.txt
+		sudo ./env/bin/pip3 install wheel
+		sudo ./env/bin/pip3 install -r requirements.txt
 	fi
 }
 

@@ -15,8 +15,4 @@ def showbanner():
   ░    ░    ░                                                  ░    ░    ░   ''')
 
 
-    exit
-
 showbanner()
-
-

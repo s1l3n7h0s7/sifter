@@ -572,7 +572,7 @@ ms_tools(){
                                 echo -e "${LP}FuzzBunch & DanderSpritz Framework,"
                                 echo -e "codename:${RED}FuzzyDander${NC}"
                                 echo -e "${YLW}If you do not know what these tools are or how they work,\nyou should not be using them. As such no instructions will be added.${NC}"
-                                if [[ ! -f '/opt/sifter/modules/exmods/fuzzdander.sh' ]]; then
+                                if [[ ! -f '/opt/sifter/modules/exmods/fuzzydander.sh' ]]; then
                                     echo -e "${URED}You do not have this module, please post an issue request on github or send me \n an email at s1l3n7h0s7@gmail.com and it will be sent to you with install instructions${NC}"
                                 else
                                     echo -e "${W}Would you like to continue?(y/n)${NC}"
@@ -684,7 +684,7 @@ webex(){
                         ./modules/exmods/vulnx.sh
                         ;;
 
-			        "Back")
+		    "Back")
                         modules
                         ;;
                 esac
@@ -982,7 +982,7 @@ modules(){
                                 ;;
 
                             "Quit")
-                                exit 2
+                                exit 1
                                 ;;
                     esac
             done
@@ -1067,8 +1067,8 @@ update(){
     figlet -f mini "Checking for updates"
     echo -e "${NC}"
                                                                                                 ########################
-    echo -e "${ORNG}Current Version:${RED}8"                                                    ##    VERSION INFO    ##
-    echo -e "${YLW}Revision:${LP}2"                                                             ##    UPDATE CHECK    ##
+    echo -e "${ORNG}Current Version:${RED}8.2${NC}"                                                    ##    VERSION INFO    ##
+   # echo -e "${YLW}Revision:${LP}2"                                                             ##    UPDATE CHECK    ##
                                                                                                 ########################
     mv modules/webmods/wordpress.sh modules/webmods/wordpress.orig
     mv modules/credmods/osmedeus.sh modules/credmods/osmedeus.orig
