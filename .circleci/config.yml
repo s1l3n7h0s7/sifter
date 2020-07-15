@@ -84,7 +84,7 @@ jobs:
             
       - run: 
           name: Run Sifter Installation
-          command: sudo bash /opt/sifter/install.sh
+          command: sudo bash /opt/sifter/.circleci/circle_build.ci
       
       
       - run:
