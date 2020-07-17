@@ -1,0 +1,26 @@
+InveighZero
+
+! Usage
+- Execute with default settings
+
+	Inveigh.exe
+
+	============================================
+
+- Set primary IP
+
+	Inveigh.exe -IP 192.168.1.1
+
+	============================================
+
+! Send spoofed traffic to another system
+
+	Inveigh.exe -IP 192.168.1.1 -SpooferIP 192.168.1.2
+
+	============================================
+
+! Pcap output for HTTP and SMB
+
+	Inveigh.exe -Pcap Y -PcapTCP 80,445
+
+	============================================

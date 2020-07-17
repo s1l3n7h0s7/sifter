@@ -10,7 +10,7 @@
 <br>
 	<img align="center" src="https://img.shields.io/badge/@Codename:-AdamantiuM-yellowgreen">
 <br>
-	<img align="center" src="https://img.shields.io/badge/Version-8.2-red">
+	<img align="center" src="https://img.shields.io/badge/Version-8.5-red">
 	<!--<img align="center" src="https://img.shields.io/badge/Revision-2-green">
 	-->
 </p>
@@ -25,21 +25,21 @@
 # Release
 
 	@Codename: AdamantiuM
-	@Version : 8.2
+	@Version : 8.5
 
 
 # Additions:
 
-<p style="color: #bf8d30"><em>- <a style="color: #729e1b" href="#">Espionage</a> - Network Traffic Sniffing &amp; ArpSpoofing<br />
-- <a style="color: #729e1b" href="#">KatanaFramework</a> - Web Exploitation Framework (Java Front-end)<br />
-- <a style="color: #729e1b" href="#">PowerHub</a> - PowerShell post exploitation tool which aids in delivering code  which may get flagged by endpoint protection.<br />
-- <a style="color: #729e1b" href="#">MetaSploit</a> - Deploy metasploit from within Sifter for Exploitational purposes.<br />
+<p style="color: #bf8d30"><em>- <a style="color: #729e1b" href="#">OSINT-Framework</a> - Web-based OSINT-Framework<br />
+- <a style="color: #729e1b" href="#">InveighZero</a> - Post-Exploitation tool to be used on an exploited session with low privileges<br />
+- <a style="color: #729e1b" href="#">CardPwn</a> - OSINT Tool to find Breached Credit Cards Information<br />
 - <a style="color: #729e1b" href="#">Spiderfoot</a> - Integrates mulpitple tool & data snslysis sources, making that data easy to navigate from an HTTP panel.<br />
 - <a style="color: #729e1b" href="#">Email2PhoneNumber</a> - OSINT tool that allows you to obtain a target's phone number just by having his email address.<br />
 - <a style="color: #729e1b" href="#">Intrigue-Core</a> - Automation framework and orchestration engine for cybersecurity data collection & Attack Surface Mapping<br />
-- <a style="color: #729e1b" href="#">finDOM-XSS</a> - Domain based XSS Scanner<br />
+- <a style="color: #729e1b" href="#">WBruter</a> - Bruteforce Android Lock pin (<strong>USB Debugging must be enable but root is not needed</strong>)<br />
 - <a style="color: #729e1b" href="#">ODIN</a> - Key feature is the data management and reporting.<br />
-&emsp;<strong><em>'-->&emsp;&ensp;Database can be converted into an HTML report or a Neo4j graph database for visualizing the data.
+&emsp;<strong><em>'-->&emsp;&ensp;Database can be converted into an HTML report or a Neo4j graph database for visualizing the data.<br />
+- <a style="color: #729e1b" href="#">UFONet</a> - P2P and cryptographic -disruptive toolkit- that allows to perform DoS and DDoS attacks<br />
 </em>
  </p>
 
@@ -59,7 +59,7 @@ Most modules are explained along with demos of a lot of the tools
 <br>
 # Releases
 <br>
-<em>The latest release can be downloaded <a href="https://github.com/s1l3nt78/sifter/archive/v8_r2.zip"><strong>here</strong></a></em>
+<em>The latest release can be downloaded <a href="https://github.com/s1l3nt78/sifter/archive/v8.5.zip"><strong>here</strong></a></em>
 <br />
 <em>Older Releases can be found <a href="https://github.com/s1l3nt78/sifter/archive/"><strong>here</strong></a></em>
 <br>
@@ -98,6 +98,7 @@ Most modules are explained along with demos of a lot of the tools
 - <a href="https://github.com/j3ssie/Osmedeus">Osmedeus</a><br />
 - <a href="https://github.com/bhavsec/reconspider">ReconSpider</a><br />
 - <a href="https://github.com/Raikia/CredNinja">CredNinja</a><br />
+- <a href="https://github.com/lockfale/OSINT-Framework">OSINT-Framework</a>
 
 
 <strong>#Targeted Information Gatherers</strong>
@@ -105,8 +106,9 @@ Most modules are explained along with demos of a lot of the tools
 - <a href="https://github.com/thewhiteh4t/seeker">Seeker</a><br />
 - <a href="https://github.com/sherlock-project/sherlock">Sherlock</a><br />
 - <a href="https://github.com/evilsocket/xray">xRay</a><br />
-- <a href="https://github.com/martinvigo/email2phonenumber">E2P (Email2Phone)</a>
-- <a href="https://github.com/chrismaddalena/ODIN">ODIN</a>
+- <a href="https://github.com/martinvigo/email2phonenumber">E2P (Email2Phone)</a><br />
+- <a href="https://github.com/chrismaddalena/ODIN">ODIN</a><br />
+- <a href="https://github.com/itsmehacker/CardPwn">CardPwn</a><br />
 
 
 <strong>#Domain Recon Gathering</strong>
@@ -128,6 +130,7 @@ Most modules are explained along with demos of a lot of the tools
 - <a href="#">DDoS</a><br />
 &emsp;&emsp;-- <a href="https://github.com/s1l3nt78/Dark-Star">Dark-Star</a><br />
 &emsp;&emsp;-- <a href="https://github.com/LimerBoy/Impulse">Impulse</a><br />
+&emsp;&emsp;-- <a href="https://github.com/epsylon/ufonet">UFONet</a><br />
 - <a href="https://github.com/tegal1337/NekoBotV1">NekoBot</a><br />
 - <a href="https://github.com/capture0x/XSHOCK">xShock</a><br />
 - <a href="https://github.com/anouarbensaad/vulnx">VulnX</a><br />
@@ -145,7 +148,8 @@ Most modules are explained along with demos of a lot of the tools
 - <a href="https://github.com/Technowlogy-Pushpender/creds_harvester">CredHarvester</a><br />
 - <a href="https://github.com/S3cur3Th1sSh1t/PowerSharpPack">PowerSharp</a><br />
 - <a href="https://github.com/cyberark/ACLight">ACLight2</a><br />
-- <a href="https://github.com/AdrianVollmer/PowerHub">PowerHub</a>
+- <a href="https://github.com/AdrianVollmer/PowerHub">PowerHub</a><br />
+- <a href="https://github.com/Kevin-Robertson/InveighZero">InveighZero</a>
 		  
 
 <strong>#Exploitation Frameworks</strong>
@@ -164,6 +168,7 @@ Most modules are explained along with demos of a lot of the tools
 
 <strong>#BruteForcing</strong>
 + <a href="https://github.com/GitHackTools/BruteDum">BruteDUM</a><br />
++ <a href="https://github.com/wuseman/WBRUTER">WBruter</a><br />
 		  
 		
 <strong>#Password Tools</strong>

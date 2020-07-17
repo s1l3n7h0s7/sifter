@@ -247,26 +247,29 @@ postinfo(){
     figlet -f mini "Post-Exploitation"
     echo -e "${NC}"
     PS3='What tool would you like to use?'
-        options=("Omega" "WinPwn" "ACLight2" "Back")
+        options=("Omega" "WinPwn" "ACLight2" "InveighZero" "Back")
         select opt in "${options[@]}"
         do
             case $opt in
                 "Omega")
-                            ${COM} /opt/sifter/info/omega.info &
-                            ;;                    
+                    ${COM} /opt/sifter/info/omega.info &
+                    ;;                    
 
                 "WinPwn")
-                            ${COM} /opt/sifter/info/WinPwn.info &
-                            ;;
+                    ${COM} /opt/sifter/info/WinPwn.info &
+                    ;;
                 
                 "ACLight")
-                            ${COM} /opt/sifter/info/aclight.info &
-                            ;;
+                    ${COM} /opt/sifter/info/aclight.info &
+                    ;;
+
+                "InveighZero")
+                    ${COM} /opt/sifter/info/inveighzero.info &
 
                "Back")
-                            cd /opt/sifter
-                            ./sifter -m
-                            ;;
+                    cd /opt/sifter
+                    ./sifter -m
+                    ;;
 
             esac
         done
@@ -305,6 +308,10 @@ exmodinfo(){
 
                     "VulnX")
                             ${COM} /opt/sifter/info/vulnx.info &
+                            ;;
+
+                    "WBruter")
+                            ${COM} /opt/sifter/info/wbruter.info
                             ;;
                     
                     "Back")

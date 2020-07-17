@@ -38,6 +38,7 @@ sleep 1
 echo "============================================================================"
 ls resources
 echo -e "${W}Please enter list to use for subdomain scanning${NC}"
+echo -e "${URED}NOTE:${ORNG} Lists shown above are in resources folder\nTo use these lists, please first type ${UBLUE}resources${NC}${ORNG}\nThis is to allow tab completion for custom lists${NC}"
 sleep 1
 read -e -p "" LIST
 sleep 1
@@ -92,7 +93,7 @@ echo -e "${W}Screen Capture	: ${RED} $SC1 ${NC}"
 echo -e "${W}Stealth		: ${RED} $STLTH1 ${NC}"
 echo -e "${W}Debug			: ${RED} ${DE} ${NC}"
 echo "Please wait...."
-sudo venv/bin/python3 asm.py -t ${TARGET} -ln -w resources/${LIST} -o /opt/sifter/results/ASM/${DOC} -f ${FORMAT} ${SC} ${STLTH} ${BUG} -v
+sudo ./venv/bin/python3 asm.py -t ${TARGET} -ln -w resources/${LIST} -o /opt/sifter/results/ASM/${DOC} -f ${FORMAT} ${SC} ${STLTH} ${BUG} -v
 cd /opt/sifter
 sifter -m
 
