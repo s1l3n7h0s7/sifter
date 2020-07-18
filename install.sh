@@ -15,7 +15,7 @@ UBLUE='\033[4;34m'
 URED='\033[4;31m'
 
 sudo apt update && sudo apt-get update && sudo apt full-upgrade
-sudo apt-get install -y python wmdocker graphviz kdialog python-dev python3-venv python-pip libpython3-stdlib python3 python2:any python3-pip libmariadb-dev git libsqlite3-0 nmap wpscan nikto dirbuster leafpad figlet nano docker docker-compose docker.io python3-dnspython python3-geoip python3-whois python3-requests python3-ssdeep nodejs npm wafw00f arp-scan golang mariadb-client mariadb-server eom liblapack3 python-numpy -y # sqlite3
+sudo apt-get install -y python wmdocker graphviz kdialog python-dev python3-venv python-pip libpython3-stdlib python3 python2:any python3-pip libmariadb-dev git libsqlite3-0 nmap wpscan nikto dirbuster leafpad figlet nano docker docker-compose docker.io python3-dnspython python3-geoip python3-whois python3-requests python3-ssdeep nodejs npm wafw00f arp-scan golang mariadb-client mariadb-server eom liblapack3 python-numpy --allow # sqlite3
 sudo apt --fix-broken install
 #wget http://ftp.us.debian.org/debian/pool/main/p/python-mysqldb/python-mysqldb_1.3.10-2_amd64.deb
 #sudo dpkg -i python-mysqldb_1.3.10-2_amd64.deb
@@ -64,7 +64,7 @@ t1(){
 		figlet -f mini "SniffingBear is already installed"
 		echo -e "${NC}"
 		cd SniffingBear 
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/MrSuicideParrot/SniffingBear.git
@@ -83,7 +83,7 @@ t2(){
 		figlet -f mini "Maryam is already installed"
 		echo -e "${NC}"
 		cd /opt/Maryam
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/saeeddhqan/Maryam.git
@@ -103,7 +103,7 @@ t3(){
 		figlet -f mini "HoneyCaught is already installed"
 		echo -e "${NC}"
 		cd /opt/HoneyCaught 
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/aswinmguptha/HoneyCaught.git
@@ -122,8 +122,6 @@ t4(){
 		echo -e "${ORNG}"
 		figlet -f mini "BlackWidow is already installed"
 		echo -e "${NC}"
-		cd /root/BlackWidow
-		sudo git fetch && sudo git pull &>/dev/null
 	else
 		cd /root
 		sudo git clone https://github.com/1N3/BlackWidow.git
@@ -146,7 +144,7 @@ t5(){
 		figlet -f mini "BFAC is already installed"
 		echo -e "${NC}"
 		cd /opt/bfac 
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/mazen160/bfac.git
@@ -166,7 +164,8 @@ t6(){
 		figlet -f mini "Rapidscan is already installed"
 		echo -e "${NC}"
 		cd /opt/rapidscan
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo wget https://raw.githubusercontent.com/skavngr/rapidscan/master/rapidscan.py
+		sudo chmod +x rapidscan.py
 	else
 		cd /opt
 		sudo git clone https://github.com/s1l3nt78/rapidscan.git
@@ -187,7 +186,7 @@ t7(){
 		figlet -f mini "ShodanSploit is already installed."
 		echo -e "${NC}"
 		cd /opt/shodansploit 
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/shodansploit/shodansploit.git
@@ -207,7 +206,7 @@ t8(){
 		figlet -f mini "Yuki-Chan is already installed"
 		echo -e "${NC}"
 		cd /root/yuki
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /root
 		sudo git clone https://github.com/s1l3nt78/Yuki-Chan-The-Auto-Pentest.git
@@ -223,9 +222,10 @@ t8(){
 		sudo chmod +x wafninja joomscan yuki.sh install-perl-module.sh
 		sudo ./install-perl-module.sh
 		sudo chmod +x wafninja joomscan yuki.sh #install-perl-module.sh
-		sudo ./install-perl-module.sh
+		#sudo ./install-perl-module.sh
 	fi
 }
+
 
 ###################
 # 9 # ReconSpider #
@@ -238,7 +238,7 @@ t9(){
 		figlet -f mini "ReconSpider is already installed"
 		echo -e "${NC}"
 		cd /opt/reconspider
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/bhavsec/reconspider.git
@@ -262,8 +262,8 @@ t10(){
 		sudo git clone https://github.com/Ekultek/Zeus-Scanner
 		cd Zeus-Scanner
 		sudo docker pull s1l3nt78/zeus
-		echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
-		read ID
+		#echo -e "${W}Please copy and paste the final container's image ID shown above${NC}"
+		#read ID
 		sudo docker tag ${ID} zeus
 	fi
 }
@@ -312,33 +312,36 @@ t12(){
 t13(){
 	echo -e "${W}===========================================================================================${NC}"
 	echo -e "${YLW}Checking for Attack Surface Mapper${NC}"
-	if [[ -d /opt/AttackSurfaceMapper ]]; then
+	if [[ -d /opt/AttackSurfaceMapper ]] || [[ -d /root/AttackSurfaceMapper ]]; then
+		if [[ -d '/opt/sifter/extras/.git_ASM' ]]; then
+			sudo rm -rf /opt/AttackSurfaceMapper/.git
+			sudo mv /opt/sifter/extras/.git_ASM /opt/AttackSurfaceMapper/.git
+		fi
 		echo -e "${ORNG}"
 		figlet -f mini "ASM is already installed."
 		echo -e "${NC}"
 		cd /opt/AttackSurfaceMapper
 		if [[ ! -d 'venv' ]]; then
-			sudo python3.8 -m venv venv
+			sudo python3 -m venv venv
 			source venv/bin/activate
-			sudo ./venv/bin/python3 -m pip install wheel
-			sudo ./venv/bin/python3 -m pip install -r requirements.txt
+			sudo ./venv/bin/pip3 install wheel
+			sudo ./venv/bin/pip3 install -r requirements.txt
 		fi
-		CHK=$(sudo git fetch && sudo git pull &>/dev/null)
+		CHK=$(sudo git fetch && sudo git pull)
 		if [[ ${CHK} == "Already up to date." ]]; then
 			sleep 1
 		else
 			source venv/bin/activate
-			sudo ./venv/bin/python3 -m pip install colorama wheel
-			sudo ./venv/bin/python3 -m pip install -r requirements.txt
+			sudo ./venv/bin/pip3 install wheel
+			sudo ./venv/bin/pip3 install -r requirements.txt
 		fi
 	else
 		cd /opt
 		sudo git clone https://github.com/superhedgy/AttackSurfaceMapper
 		cd /opt/AttackSurfaceMapper
-		sudo python3.8 -m venv venv
 		source venv/bin/activate
-		sudo ./venv/bin/python3 -m pip install colorama wheel
-		sudo ./venv/bin/python3 -m pip install -r requirements.txt
+		sudo ./venv/bin/pip3 install wheel
+		sudo ./venv/bin/pip3 install -r requirements.txt
 		if [[ -f '/opt/sifter/extras/.asm' ]]; then
 			sudo cp /opt/sifter/extras/.asm -t /usr/sbin
 			sudo mv /opt/sifter/extras/.asm -t /opt/AttackSurfaceMapper
@@ -358,7 +361,7 @@ t14(){
 		figlet -f mini "ActiveReign is already installed"
 		echo -e "${NC}"
 		cd /opt/ActiveReign
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/m8r0wn/ActiveReign.git
@@ -387,13 +390,13 @@ t15(){
 		figlet -f mini "iSpy is already installed"
 		echo -e "${NC}"
 		cd /opt/ispy
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/Cyb0r9/ispy.git
 		cd ispy
 		sudo chmod +x setup.sh
-		sudo bash setup.sh
+		#sudo bash setup.sh
 	fi
 }
 
@@ -408,7 +411,7 @@ t16(){
 		figlet -f mini "Sitadel is already installed"
 		echo -e "${NC}"
 		cd /opt/Sitadel
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/shenril/Sitadel.git
@@ -456,7 +459,7 @@ t18(){
 		figlet -f mini "NekoBot is already installed"
 		echo -e "${NC}"
 		cd /opt/NekoBotV1
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/tegal1337/NekoBotV1.git
@@ -483,7 +486,7 @@ t20(){
 		figlet -f mini "Armory is already installed"
 		echo -e "${NC}"
 		cd /opt/armory
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/depthsecurity/armory.git
@@ -504,7 +507,7 @@ t21(){
 		figlet -f mini "Seeker is already installed"
 		echo -e "${NC}"
 		cd /opt/seeker
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/thewhiteh4t/seeker.git
@@ -526,7 +529,7 @@ t22(){
 		figlet -f mini "AapFinder is already installed"
 		echo -e "${NC}"
 		cd /opt/aapfinder
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/Technowlogy-Pushpender/aapfinder.git
@@ -564,7 +567,7 @@ t24(){
 		figlet -f mini "BruteDUM is already installed"
 		echo -e "${NC}"
 		cd /opt/BruteDum
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/GitHackTools/BruteDum.git
@@ -582,7 +585,7 @@ t25(){
 		figlet -f mini "OneFind is already installed"
 		echo -e "${NC}"
 		cd /opt/onedrive_user_enum
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/nyxgeek/onedrive_user_enum
@@ -600,7 +603,7 @@ t26(){
 		figlet -f mini "SMBGhost Scanner is already installed"
 		echo -e "${NC}"
 		cd /opt/SMBGhost
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo apt-get install python3-pip
@@ -614,7 +617,7 @@ t26(){
 		figlet -f mini "SMBGhost Exploit is already installed"
 		echo -e "${NC}"
 		cd /opt/SMBGhost_RCE_PoC
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/chompie1337/SMBGhost_RCE_PoC.git
@@ -647,7 +650,7 @@ t28(){
 		figlet -f mini "WPForce is already installed"
 		echo -e "${NC}"
 		cd /opt/WPForce
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/n00py/WPForce.git
@@ -665,7 +668,7 @@ t29(){
 		figlet -f mini "xShock is already installed"
 		echo -e "${NC}"
 		cd /opt/XSHOCK
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/capture0x/XSHOCK.git
@@ -685,7 +688,7 @@ t30(){
 		figlet -f mini "VulnX is already installed"
 		echo -e "${NC}"
 		cd /opt/vulnx
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/anouarbensaad/vulnx.git
@@ -706,7 +709,7 @@ t31(){
 		figlet -f mini "XSS-Freak is already installed"
 		echo -e "${NC}"
 		cd /opt/XSS-Freak
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/PR0PH3CY33/XSS-Freak.git
@@ -726,7 +729,7 @@ t32(){
 		figlet -f mini "CredNinja is already installed"
 		echo -e "${NC}"
 		cd /opt/CredNinja
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/Raikia/CredNinja.git
@@ -744,7 +747,7 @@ t33(){
 		figlet -f mini "Impulse is already installed"
 		echo -e "${NC}"
 		cd /opt/Impulse
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/LimerBoy/Impulse
@@ -764,7 +767,7 @@ t34(){
 		figlet -f mini "CredsHarvester is already installed"
 		echo -e "${NC}"
 		cd /opt/creds_harvester
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/Technowlogy-Pushpender/creds_harvester.git
@@ -807,7 +810,7 @@ t36(){
 		figlet -f mini "DorksEye is already installed"
 		echo -e "${NC}"
 		cd /opt/dorks-eye
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt/
 		sudo git clone https://github.com/BullsEye0/dorks-eye.git
@@ -889,7 +892,7 @@ t40(){
 		figlet -f mini "XSStrike is already installed"
 		echo -e "${NC}"
 		cd /opt/XSStrike
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo python3 -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -909,7 +912,7 @@ t41(){
 		figlet -f mini "MkCheck is already installed"
 		echo -e "${NC}"
 		cd /opt/MkCheck
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		t42
 	else
 		cd /opt
@@ -928,7 +931,7 @@ t41(){
 t42(){
 	echo -e "${YLW}Updating RouterSploit${NC}"
 	cd /root/routersploit 
-	sudo git fetch && sudo git pull &>/dev/null
+	sudo git fetch && sudo git pull
 }
 
 #################
@@ -949,11 +952,11 @@ t43(){
 			sudo ./venv/bin/pip3 install -r requirements.txt
 			sudo ./venv/bin/python3 setup.py install
 		fi
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		source venv/bin/activate
 		sudo ./venv/bin/pip3 install wheel
-		sudo ./venv/bin/pip3 install -r requirements.txt &>/dev/null
-		sudo ./venv/bin/python3 setup.py install &>/dev/null
+		sudo ./venv/bin/pip3 install -r requirements.txt
+		sudo ./venv/bin/python3 setup.py install
 	else
 		cd /opt
 		sudo git clone https://github.com/elceef/dnstwist.git
@@ -975,7 +978,7 @@ t44(){
 		figlet -f mini "Espionage is already installed"
 		echo -e "${NC}"
 		cd /opt/Espionage
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo python3 -m pip install -r requirments.txt
 	else
 		cd /opt
@@ -996,7 +999,7 @@ t45(){
 		figlet -f mini "KatanaFramework is already installed"
 		echo -e "${NC}"
 		cd /opt/KatanaFramework
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo sh dependencies
 		sudo python2 install
 	else
@@ -1019,7 +1022,7 @@ t46(){
 		figlet -f mini "Sherlock is already installed"
 		echo -e "${NC}"
 		cd /opt/sherlock
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo python3 -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -1061,7 +1064,7 @@ t48(){
 		figlet -f mini "theHarvester is already installed"
 		echo -e "${NC}"
 		cd /opt/theHarvester
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/laramies/theHarvester.git
@@ -1082,7 +1085,7 @@ t49(){
 		figlet -f mini "Spiderfoot is already installed"
 		echo -e "${NC}"
 		cd /opt/spiderfoot
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo python3 -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -1104,7 +1107,7 @@ t50(){
 		figlet -f mini "E2P is already installed"
 		echo -e "${NC}"
 		cd /opt/email2phonenumber
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		sudo python -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -1126,7 +1129,7 @@ t51(){
 		figlet -f mini "Intrigue-Core is already installed"
 		echo -e "${NC}"
 		cd /opt/intrigue-core
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 		#sudo python -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -1134,12 +1137,12 @@ t51(){
 		cd intrigue-core
 		sudo docker build -f Dockerfile-standalone . -t intrigue-core
 		echo -e "${ORNG}Your login username and password shown above for Intrigue HTTP${NC}"
- 		echo -e "${RED}Please enter the username${NC}"
- 		read USER
- 		echo -e "${RED}Please enter the password${NC}"
- 		read PASS
- 		sudo echo "${USER}" >> /opt/Intrigue-Core/Panel_Login.info
- 		sudo echo "${PASS}" >> /opt/Intrigue-Core/Panel_Login.info
+# 		echo -e "${RED}Please enter the username${NC}"
+# 		read USER
+# 		echo -e "${RED}Please enter the password${NC}"
+# 		read PASS
+# 		sudo echo "${USER}" >> /opt/Intrigue-Core/Panel_Login.info
+# 		sudo echo "${PASS}" >> /opt/Intrigue-Core/Panel_Login.info
 		echo -e "${UBLUE}Intrigue Login Saved to ${URED}/opt/Intrigue-Core/Panel_Login.info${NC}"
 	fi 
 }
@@ -1155,7 +1158,7 @@ t52(){
 		figlet -f mini "Optiva-Framework is already installed"
 		echo -e "${NC}"
 		#cd /opt/Optiva-Framework
-		#sudo git fetch && sudo git pull &>/dev/null
+		#sudo git fetch && sudo git pull
 		#sudo python -m pip install -r requirements.txt
 	else
 		cd /opt
@@ -1177,7 +1180,7 @@ t53(){
 		figlet -f mini "finDOM-XSS is already installed"
 		echo -e "${NC}"
 		cd /opt/findom-xss
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/dwisiswant0/findom-xss.git
@@ -1206,99 +1209,12 @@ t54(){
 		figlet -f mini "ODIN is already installed"
 		echo -e "${NC}"
 		cd /opt/ODIN
-		sudo git fetch && sudo git pull &>/dev/null
+		sudo git fetch && sudo git pull
 	else
 		cd /opt
 		sudo git clone https://github.com/chrismaddalena/ODIN
 		cd ODIN/setup
 		sudo python3 setup_check.py
-	fi
-}
-
-########################
-# 55 # OSINT-Framework #
-########################
-t55(){
-	echo -e "${W}===========================================================================================${NC}"
-	echo -e "${YLW}Checking for OSINT-Framework${NC}"
-	if [[ -d '/home/$USER/.local/OSINT-Framework' ]]; then
-		echo -e "${ORNG}"
-		figlet -f mini "OSINT-Framework is already installed"
-		echo -e "${NC}"
-		cd /home/$USER/.local/OSINT-Framework
-		git fetch && git pull &>/dev/null
-		npm install
-	else
-		cd /home/$USER/.local
-		git clone https://github.com/lockfale/OSINT-Framework.git
-		cd OSINT-Framework
-		npm install
-	fi
-}
-
-###############
-# 56 # UFONet #
-###############
-t56(){
-	echo -e "${W}===========================================================================================${NC}"
-	echo -e "${YLW}Checking for UFONet${NC}"
-	if [[ -d '/opt/ufonet' ]]; then
-		echo -e "${ORNG}"
-		figlet -f mini "UFONet is already installed"
-		echo -e "${NC}"
-		cd /opt/ufonet
-		sudo git fetch && sudo git pull &>/dev/null
-		#sudo python3 setup.py install
-	else
-		cd /opt
-		sudo git clone https://github.com/epsylon/ufonet.git
-		cd ufonet
-		sudo apt-get install python3-pycurl
-		if [[ -f '/opt/sifter/extras/setup.py' ]]; then
-			sudo mv /opt/sifter/extras/setup.py /opt/ufonet/setup.py
-		fi
-		sudo python3 setup.py install
-	fi
-}
-
-################
-# 57 # CardPwn #
-################
-t57(){
-	echo -e "${W}===========================================================================================${NC}"
-	echo -e "${YLW}Checking for CardPwn${NC}"
-	if [[ -d '/opt/CardPwn' ]]; then
-		echo -e "${ORNG}"
-		figlet -f mini "CardPwn is already installed"
-		echo -e "${NC}"
-		cd /opt/CardPwn
-		sudo git fetch && sudo git pull &>/dev/null
-		sudo python3 -m pip install -r requirements.txt
-	else
-		cd /opt
-		sudo git clone https://github.com/itsmehacker/CardPwn.git
-		cd CardPwn
-		sudo python3 -m pip install -r requirements.txt
-	fi
-}
-
-################
-# 58 # WBruter #
-################
-t58(){
-	echo -e "${W}===========================================================================================${NC}"
-	echo -e "${YLW}Checking for WBruter${NC}"
-	if [[ -d '/opt/WBRUTER' ]]; then
-		echo -e "${ORNG}"
-		figlet -f mini "WBruter is already installed"
-		echo -e "${NC}"
-		cd /opt/WBRUTER
-		sudo git fetch && sudo git pull &>/dev/null
-	else
-		cd /opt
-		sudo git clone https://github.com/wuseman/WBRUTER.git
-		cd WBRUTER
-		sudo chmod +x wbruter
 	fi
 }
 ############################################################################################################
@@ -1313,7 +1229,7 @@ t4										# BlackWidow
 t5										# BFAC
 t6										# RapidScan
 t7										# ShodanSploit
-t8										# Yuki-Chan
+#t8									# Yuki-Chan
 t9										# ReconSpider
 t10										# Zeus
 t11										# EoP
@@ -1322,7 +1238,7 @@ t13										# AttackSurfaceMapper
 t14										# ActiveReign
 t15										# iSpy
 t16										# Sitadel
-t17										# Osmedeus
+#t17									# Osmedeus
 t18										# NekoBot
 t19										# aSnip
 t20										# Armory
@@ -1342,7 +1258,7 @@ t33										# Impulse
 t34										# CredHarvester
 t35										# SayDog
 t36										# Dork-Eye
-t37										# Mentalist
+#t37									# Mentalist
 t38										# dCipher
 t39										# Honey-Tel
 t40										# XSS-Strike
@@ -1360,10 +1276,6 @@ t51										# Intrigue-Core
 #t52									# Optiva-Framework (suspended::Runtime Error)
 t53										# finDOM-XSS
 t54										# ODIN
-t55										# OSINT-Framework
-t56										# UFONet
-t57										# CardPwn
-t58										# WBruter
 
 ########################################################
 ##  Move Sifter executable to local path (/usr/sbin)  ##
@@ -1384,6 +1296,8 @@ echo -e "for better results in WPScan goto ${UBLUE}modules/wpscan.sh${NC} ${W}an
 echo -e " '${UBLUE}--api-token ${URED}your-wpscan-api-token${UBLUE}${NC}${W}' argument to both commands"
 echo -e "please add your ${YLW}shodan-api key to ${UBLUE}modules/credmods/xray.sh${NC} ${W}by '${URED}SHODAN-API${W}'${NC}"
 echo ""
-echo -e "${LP}#############################################################################################"
-echo -e "######################              ${ORNG} VGhlIERlYWQgQnVubnkgQ2x1Yg== ${LP}              ######################"
-echo -e "######################################################################################################${NC}"
+echo -e "${RED}==========================================================================================${NC}"
+
+##############################################################################################################
+##########################               VGhlIERlYWQgQnVubnkgQ2x1Yg==               ##########################
+##############################################################################################################
