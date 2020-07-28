@@ -13,6 +13,7 @@ BRED='\033[1;31m'
 UPURPLE='\033[4;35m'
 UBLUE='\033[4;34m'
 URED='\033[4;31m'
+FULL='YES'
 ARG=$2
 # IP addition argument
 # Help Menu
@@ -991,8 +992,8 @@ modules(){
                                 ;;
 
                             "Info")
-                                XTM=$(xterm -h)
-                                if [[ ${XTM} == "" ]]; then
+                                XTM=$(xterm -h | grep include)
+                                if [[ ${XTM} == "where options include:" ]]; then
                                     xterm -e /opt/sifter/info/info.sh &
                                 else
                                     ./info/info.sh
@@ -1015,7 +1016,7 @@ modules(){
                                 ;;
 
                             "Quit")
-                                exit 1
+                                exit 0
                                 ;;
                     esac
             done
@@ -1099,10 +1100,12 @@ update(){
     echo -e "${YLW}"
     figlet -f mini "Checking for updates"
     echo -e "${NC}"
-                                                                                                ########################
-    echo -e "${ORNG}Current Version:${RED}8.5${NC}"                                             ##    VERSION INFO    ##
+   
+    echo -e "${YLW}########################${NC}"                                               ########################
+    echo -e "${ORNG}# Current Version:${RED}8.5 #${NC}"                                         ##    VERSION INFO    ##
    # echo -e "${YLW}Revision:${LP}2"                                                            ##    UPDATE CHECK    ##
-                                                                                                ########################
+    echo -e "${YLW}########################${NC}"                                               ########################
+    
     mv modules/webmods/wordpress.sh modules/webmods/wordpress.orig
     mv modules/credmods/osmedeus.sh modules/credmods/osmedeus.orig
     git fetch
@@ -1114,7 +1117,7 @@ update(){
         mv modules/webmods/wordpress.orig modules/webmods/wordpress.sh
         mv modules/credmods/osmedeus.orig modules/credmods/osmedeus.sh
     else
-	    sleep 5
+        sleep 5
 	    echo -e "${W}Are there pull conflicts with files?(${YLW}y/n${W})${NC}"
       	    sleep 3
 	    read UANS
@@ -1128,12 +1131,15 @@ update(){
 	    fi
         mv modules/webmods/wordpress.orig modules/webmods/wordpress.sh
         mv modules/credmods/osmedeus.orig modules/credmods/osmedeus.sh
-        ./install.sh
-        sudo cp sifter -t /usr/sbin
+        sudo chmod +x install.sh
+        bash install.sh
         sudo chown $USER:$USER /opt/sifter --recursive
-        sudo chown $USER:$USER /usr/sbin/sifter
-        chmod +x /opt/sifter --recursive
-        chmod +x /usr/sbin/sifter
+        chmod +x /opt/sifter --recursive                                                            
+         
+        echo -e "${YLW}########################"                                                    ########################
+        echo -e "${ORNG}# Current Version:${RED} 8.5 #${NC}"                                        ##    VERSION INFO    ##
+        # echo -e "${YLW}Revision:${LP}2"                                                           ##    UPDATE CHECK    ##
+        echo -e "${YLW}########################${NC}"                                               ########################
     fi
 }
 
@@ -1267,3 +1273,5 @@ if [[ $OPTIND == 1 ]]; then				# if no option is passed
 	menu		  	                    # default command is run
 fi
 exit
+
+##########################______________ VGhlIERlYWQgQnVubnkgQ2x1Yg== ______________##########################

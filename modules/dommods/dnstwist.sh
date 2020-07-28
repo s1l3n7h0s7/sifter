@@ -46,4 +46,4 @@ echo -e "Results saved to /opt/sifter/results/DnsTwist/${TARGET}${NC}"
 cd /opt/sifter
 sifter -m
 
-##########################______________ czFsM250NzggX18gUmFiYjE3J3MgRGVu ______________##########################
+##########################______________ VGhlIERlYWQgQnVubnkgQ2x1Yg== ______________##########################

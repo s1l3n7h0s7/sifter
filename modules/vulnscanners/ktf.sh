@@ -37,4 +37,4 @@ sudo java -jar ktf.gui.jar
 cd /opt/sifter
 ./sifter -m
 
-##########################______________ czFsM250NzggX18gUmFiYjE3J3MgRGVu ______________##########################
+##########################______________ VGhlIERlYWQgQnVubnkgQ2x1Yg== ______________##########################

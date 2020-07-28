@@ -60,7 +60,7 @@ Most modules are explained along with demos of a lot of the tools
 
 # Releases
 <br>
-<em>The latest release can be downloaded <a href="https://github.com/s1l3nt78/sifter/archive/v8.5.zip"><strong>here</strong></a></em>
+<em>The latest release can be downloaded <a href="https://github.com/s1l3nt78/sifter/archive/v8_5.zip"><strong>here</strong></a></em>
 <br />
 <em>Older Releases can be found <a href="https://github.com/s1l3nt78/sifter/archive/"><strong>here</strong></a></em>
 <br>
@@ -275,4 +275,4 @@ For ideas or collaboration requests on future projects., contact details can be 
 <br />
 <br />
 
-	  <!--#################___________ czFsM250NzggX18gUmFiYjE3J3MgRGVu ___________#################--!>
+	  <!--#################___________ VGhlIERlYWQgQnVubnkgQ2x1Yg== ___________#################--!>

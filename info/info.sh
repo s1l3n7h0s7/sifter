@@ -25,32 +25,32 @@ webappinfo(){
   figlet -f mini "WebAppplication Scanners"
   echo -e "${ORNG}"
   PS3='What tool would you like to use?'
-        options=("Sitadel" "BFAC" "AapFinder" "OneFind" "XSStrike" "XSS-Freak" "Back" "Quit")
+        options=("Sitadel" "BFAC" "AapFinder" "OneFind" "XSStrike" "XSS-Freak" "Back")
         select opt in "${options[@]}"
         do
                 case $opt in
                         "Sitadel")
-                            ${COM} /opt/sifter/info/sitadel.info &
+                            ${COM} /opt/sifter/info/sitadel.info &>/dev/null
                             ;;
 
                         "AapFinder")
-                            ${COM} /opt/sifter/info/aapfinder.info &
+                            ${COM} /opt/sifter/info/aapfinder.info &>/dev/null
                             ;;
 
                         "BFAC")
-                            ${COM} /opt/sifter/info/bfac.info &
+                            ${COM} /opt/sifter/info/bfac.info &>/dev/null
                             ;;
 
                         "OneFind")
-                            ${COM} /opt/sifter/info/onefind.info &
+                            ${COM} /opt/sifter/info/onefind.info &>/dev/null
                             ;;
 
                          "XSStrike")
-                            ${COM} /opt/sifter/info/xsstrike.info &
+                            ${COM} /opt/sifter/info/xsstrike.info &>/dev/null
                             ;;
 
                         "XSS-Freak")
-                            ${COM} /opt/sifter/info/XSS-Freak.info &
+                            ${COM} /opt/sifter/info/XSS-Freak.info &>/dev/null
                             ;;
 
                         "Back")
@@ -68,48 +68,44 @@ credinfo(){
     figlet -f mini "Information Gatherers"
     echo -e "${ORNG}"
     PS3='Which module category would you like to use?'
-            options=("Seeker" "xRay" "Maryam" "theHarvester" "Osmedeus" "ReconSpider" "CredNinja" "Spiderfoot" "ODIN" "Back" "Quit")
+            options=("Seeker" "xRay" "Maryam" "theHarvester" "Osmedeus" "ReconSpider" "CredNinja" "Spiderfoot" "ODIN" "Back")
             select opt in "${options[@]}"
             do
                     case $opt in
-                        "Omnibus")
-                            ${COM} /opt/sifter/info/omnibus.info &
-                            ;;
-
                         "Seeker")
-                            ${COM} /opt/sifter/info/seeker.info &
+                            ${COM} /opt/sifter/info/seeker.info &>/dev/null
                             ;;
 
                         "xRay")
-                            ${COM} /opt/sifter/info/xray.info &
+                            ${COM} /opt/sifter/info/xray.info &>/dev/null
                             ;;
 
                         "theHarvester")
-                            ${COM} /opt/sifter/info/theHarvester.info &
+                            ${COM} /opt/sifter/info/theHarvester.info &>/dev/null
                             ;;
 
                         "Osmedeus")
-                            ${COM} /opt/sifter/info/osmedeus.info &
+                            ${COM} /opt/sifter/info/osmedeus.info &>/dev/null
                             ;;
 
                         "ReconSpider")
-                            ${COM} /opt/sifter/info/reconspider.info &
+                            ${COM} /opt/sifter/info/reconspider.info &>/dev/null
                             ;;
 
                         "Maryam")
-                            ${COM} /opt/sifter/info/maryam.info &
+                            ${COM} /opt/sifter/info/maryam.info &>/dev/null
                             ;;
 
                         "CredNinja")
-                            ${COM} /opt/sifter/info/credninja.info &
+                            ${COM} /opt/sifter/info/credninja.info &>/dev/null
                             ;;
 
                         "Spiderfoot")
-                            ${COM} /opt/sifter/info/spiderfoot.info &
+                            ${COM} /opt/sifter/info/spiderfoot.info &>/dev/null
                             ;;
 
                         "ODIN")
-                            ${COM} /opt/sifter/info/odin.info &
+                            ${COM} /opt/sifter/info/odin.info &>/dev/null
                             ;;
 
                         "Back")
@@ -130,12 +126,12 @@ honey_info(){
     echo -e "${YLW}eg. web-directories, enterprise email addresses, etc."
     echo -e "${ORNG}"
     PS3='What tool would you like to use?'
-            options=("HoneyTel" "Back" "Quit")
+            options=("HoneyTel" "Back")
             select opt in "${options[@]}"
             do
                     case $opt in
                         "HoneyTel")
-                            ${COM} /opt/sifter/info/honeytel.info &
+                            ${COM} /opt/sifter/info/honeytel.info &>/dev/null
                             ;;
 
                         "Back")
@@ -154,20 +150,20 @@ dominfo(){
   figlet -f mini "Domain Recon Gathering"
   echo -e "${ORNG}"
   PS3='What tool would you like to use?'
-          options=("aSnip" "Armory" "SayDog" "Back" "Quit") 
+          options=("aSnip" "Armory" "SayDog" "Back") 
           select opt in "${options[@]}"
           do
                   case $opt in
                         "Armory")
-                            ${COM} /opt/sifter/info/armory.info &
+                            ${COM} /opt/sifter/info/armory.info &>/dev/null
                             ;;
 
                         "aSnip")
-                            ${COM} /opt/sifter/info/asnip.info &
+                            ${COM} /opt/sifter/info/asnip.info &>/dev/null
                             ;;
 
                         "SayDog")
-                            ${COM} /opt/sifter/info/saydog.info &
+                            ${COM} /opt/sifter/info/saydog.info &>/dev/null
                             ;;
 
                         "Back")
@@ -186,20 +182,20 @@ vulninfo(){
   figlet -f mini "Vulnerability Scanners"
   echo -e "${ORNG}"
   PS3='What tool would you like to use?'
-          options=("Flan" "RapidScan" "Yuki-Chan" "Back" "Quit")
+          options=("Flan" "RapidScan" "Yuki-Chan" "Back")
           select opt in "${options[@]}"
           do
                   case $opt in
                         "Flan")
-                            ${COM} /opt/sifter/info/flan.info &
+                            ${COM} /opt/sifter/info/flan.info &>/dev/null
                             ;;
 
                         "RapidScan")
-                            ${COM} /opt/sifter/info/rapidscan.info &
+                            ${COM} /opt/sifter/info/rapidscan.info &>/dev/null
                             ;;
 
                         "Yuki-Chan")
-                            ${COM} /opt/sifter/info/yuki.info &
+                            ${COM} /opt/sifter/info/yuki.info &>/dev/null
                             ;;
 
                            "Back")
@@ -214,23 +210,23 @@ vulninfo(){
 web_netinfo(){
   cd /opt/sifter
   echo -e "${RED}"
-  figlet -f mini "Web Scanners & Network Modules"
+  figlet -f mini "Web Scanners &>/dev/null Network Modules"
   echo -e "${ORNG}"
   PS3='What tool would you like to use?'
-          options=("BlackWidow" "wafw00f" "AttackSurfaceMapper" "" "Back" "Quit")
+          options=("BlackWidow" "wafw00f" "AttackSurfaceMapper" "Back")
           select opt in "${options[@]}"
           do
                   case $opt in
 			            "BlackWidow")
-                            ${COM} /opt/sifter/info/blackwidow.info
+                            ${COM} /opt/sifter/info/blackwidow.info &>/dev/null
                             ;;
                         
                         "AttackSurfaceMapper")
-                            ${COM} /opt/sifter/info/asm.info
+                            ${COM} /opt/sifter/info/asm.info &>/dev/null
                             ;;
 
                         "wafw00f")
-                            ${COM} /opt/sifter/info/wafw00f.info
+                            ${COM} /opt/sifter/info/wafw00f.info &>/dev/null
                             ;;
 
                         "Back")
@@ -252,21 +248,22 @@ postinfo(){
         do
             case $opt in
                 "Omega")
-                    ${COM} /opt/sifter/info/omega.info &
+                    ${COM} /opt/sifter/info/omega.info &>/dev/null
                     ;;                    
 
                 "WinPwn")
-                    ${COM} /opt/sifter/info/WinPwn.info &
+                    ${COM} /opt/sifter/info/WinPwn.info &>/dev/null
                     ;;
                 
                 "ACLight")
-                    ${COM} /opt/sifter/info/aclight.info &
+                    ${COM} /opt/sifter/info/aclight.info &>/dev/null
                     ;;
 
                 "InveighZero")
-                    ${COM} /opt/sifter/info/inveighzero.info &
+                    ${COM} /opt/sifter/info/inveighzero.info &>/dev/null
+                    ;;
 
-               "Back")
+                "Back")
                     cd /opt/sifter
                     ./sifter -m
                     ;;
@@ -282,36 +279,36 @@ exmodinfo(){
   figlet -f mini "Exploitation Tools"
   echo -e "${ORNG}"
   PS3='What tool would you like to use?'
-        options=("MkCheck" "BruteDUM" "ActiveReign" "NekoBot" "xShock" "VulnX" "Back" "Quit")
+        options=("MkCheck" "BruteDUM" "ActiveReign" "NekoBot" "xShock" "VulnX" "WBruter" "Back")
         select opt in "${options[@]}"
         do
                 case $opt in
                     "BruteDUM")
-                            ${COM} /opt/sifter/info/brutedum.info &
+                            ${COM} /opt/sifter/info/brutedum.info &>/dev/null
                             ;;
 
                     "ActiveReign")
-                            ${COM} /opt/sifter/info/activereign.info &
+                            ${COM} /opt/sifter/info/activereign.info &>/dev/null
                             ;;
 
                     "MkCheck")
-                            ${COM} /opt/sifter/info/mkcheck.info &
+                            ${COM} /opt/sifter/info/mkcheck.info &>/dev/null
                             ;;
 
                     "NekoBot")
-                            ${COM} /opt/sifter/info/nekobot.info &
+                            ${COM} /opt/sifter/info/nekobot.info &>/dev/null
                             ;;
 
                     "xShock")
-                            ${COM} /opt/sifter/info/xshock.info &
+                            ${COM} /opt/sifter/info/xshock.info &>/dev/null
                             ;;
 
                     "VulnX")
-                            ${COM} /opt/sifter/info/vulnx.info &
+                            ${COM} /opt/sifter/info/vulnx.info &>/dev/null
                             ;;
 
                     "WBruter")
-                            ${COM} /opt/sifter/info/wbruter.info
+                            ${COM} /opt/sifter/info/wbruter.info &>/dev/null
                             ;;
                     
                     "Back")
@@ -322,6 +319,11 @@ exmodinfo(){
         done
     echo -e "${NC}"
 }
+
+                                                                                ############
+                                                                                #  RUNTIME #
+                                                                                ############
+python3 /opt/sifter/extras/ban.py
 echo -e "${URED}Modules${NC}"
 echo -e "${ORNG}"
 PS3='What would you like to do?'
