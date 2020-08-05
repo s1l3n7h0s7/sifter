@@ -13,85 +13,83 @@ jobs:
     steps:
       #- restore_cache:
       #    key: deps1-{{ .Branch }}-{{ checksum "/opt/sifter/install.sh" }}
-      - run: 
+      - run:
           name: Install & Sign Kali Repos
           command: |
             sudo sh -c "echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' > /etc/apt/sources.list.d/kali.list"
             sudo apt install gnupg                                                                                    # Install Kali Repo list
             wget 'https://archive.kali.org/archive-key.asc'                                                           # Aquire Kali Repo Key Signature
-            sudo apt-key add archive-key.asc                                                                          # Add Kali Signing Key to Machine Image 
-    
-    
-      - run: 
+            sudo apt-key add archive-key.asc                                                                          # Add Kali Signing Key to Machine Image
+
+
+      - run:
           name: Remove Unnecessary Repos
-          command: | 
+          command: |
             sudo rm /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/heroku.list                    # Remove Faulty Repo lists (breaking CircleCI Build)
-  
-  
-      - run: 
+
+
+      - run:
           name: Apt Repository List Update
           command: sudo apt update                                                                                          # Check Repo Status
-      
-      
-      - run: 
+
+
+      - run:
           name: AutoRestart Updated System Services
           command: echo '* libraries/restart-without-asking boolean true' | sudo debconf-set-selections                     # Set Services to Restart Automatically
-      
-      
+
+
       - run:                                                                                       # Check for Package Updates
           name: Apt System Package Update
           command: sudo apt-get update
-          
-      
+
+
       - run:                                                                                         # Python3 (Pip3, Setuptools, Wheel) Install
            name: Python3 Setup
            command: sudo apt-get install python3.8 python3-pip
-      
-      
+
+
       - run:
           name: Python Version Linkage
           command: |
             ls /usr/bin/python
             sudo update-alternatives --install /usr/bin/python3 python3.8 /usr/bin/python3.8 1                        # Make Python3.8 the main 'Python3' interpreter
-  
-  
-      - run: 
+
+
+      - run:
           name: Download Sifter (CircleCI Specific Branch - Removes install arguments that halt build progress)
           command: |
             sudo git clone -b circleci-project-setup https://github.com/s1l3nt78/sifter /opt/sifter                   # Branch Specifically Designed for CircleCI Build
-    
-    
+
+
       - run:
           name: Install Arguments Replaced (Stop build errors[CircleCI ONLY])
-          command: | 
+          command: |
             cd /opt/sifter
             OUT='read INSTALL_PROMPT'                                                                                 # Original Dependancy Installion Validation Argument
             INS='#read INSTALL_PROMPT'                                                                                # CircleCI Automatic Installation Acceptance
-            sudo sed -i "s/${OUT}/${INS}/g" .circleci/circle_build.ci                                         # .circleci/circle_build.ci (CircleCI Installer)
-            
+            sudo sed -i "s/${OUT}/${INS}/g" install.sh
+
             OSOUT='read INOPT'                                                                                        # Osmedeus Install Option Argument
             OSIN='l | read INOPT'                                                                                     # Osmedeus Install Option Set to 'First-Run Install'
-            sudo sed -i "s/${OSOUT}/${OSIN}/g" .circleci/circle_build.ci                                      # .circleci/circle_build.ci (CircleCI Installer)
+            sudo sed -i "s/${OSOUT}/${OSIN}/g" install.sh
 
 
-      - run: 
+      - run:
           name: Python2 (Pip upgrade, Setuptools & Wheel install)
           command: |
-            sudo pip2 install --upgrade pip 
-            pip2 install --upgrade pip 
+            sudo pip2 install --upgrade pip
+            pip2 install --upgrade pip
             sudo pip2 install setuptools wheel
-            
-            
-      - run: 
+
+      - run:
           name: Run Sifter Installation
-          command: sudo bash /opt/sifter/.circleci/circle_build.ci
-      
-      
+          command: sudo bash /opt/sifter/install.sh
+
       - run:
           name: Sifter (Runtime - Install Check)
           command: |
             bash /opt/sifter/sifter
-      
+
       #- save_cache:
       #    key: deps1-{{ .Branch }}-{{ checksum "/opt/sifter/install.sh" }}
       #    paths:
