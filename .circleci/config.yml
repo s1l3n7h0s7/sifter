@@ -43,18 +43,18 @@ jobs:
           command: sudo apt-get update
 
 
-      - run:                                                                                         # Reinstall OpenSSH causing install stop
-           name: Python3 Setup                                                                       # Python3 (Pip3, Setuptools, Wheel) Install
-           command: |
-              sudo apt-get remove --purge openssh-server
-              sudo apt-get install python3.8 python3-pip
+#      - run:                                                                                         # Reinstall OpenSSH causing install stop
+#           name: Python3 Setup                                                                       # Python3 (Pip3, Setuptools, Wheel) Install
+#           command: |
+#              sudo apt-get remove --purge openssh-server
+#              sudo apt-get install python3.8 python3-pip
 
 
-      - run:
-          name: Python Version Linkage
-          command: |
-            ls /usr/bin/python
-            sudo update-alternatives --install /usr/bin/python3 python3.8 /usr/bin/python3.8 1                        # Make Python3.8 the main 'Python3' interpreter
+ #     - run:
+ #         name: Python Version Linkage
+ #         command: |
+ #           ls /usr/bin/python
+ #           sudo update-alternatives --install /usr/bin/python3 python3.8 /usr/bin/python3.8 1                        # Make Python3.8 the main 'Python3' interpreter
 
 
       - run:
