@@ -15,7 +15,7 @@ UBLUE='\033[4;34m'
 URED='\033[4;31m'
 
 sudo apt update && sudo apt-get update && sudo apt full-upgrade
-sudo apt-get install -y python wmdocker graphviz kdialog python-dev python3-venv python-pip libpython3-stdlib python3 python2:any python3-pip libmariadb-dev git libsqlite3-0 nmap wpscan nikto dirbuster leafpad figlet nano docker docker-compose docker.io python3-dnspython python3-geoip python3-whois python3-requests python3-ssdeep nodejs npm wafw00f arp-scan golang mariadb-client mariadb-server eom liblapack3 python-numpy --allow # sqlite3
+sudo apt-get install -y python wmdocker graphviz kdialog python-dev python3-venv python-pip libpython3-stdlib python3 python2:any python3-pip libmariadb-dev git libsqlite3-0 nmap wpscan nikto dirbuster leafpad figlet nano docker docker-compose docker.io python3-dnspython python3-geoip python3-whois python3-requests python3-ssdeep nodejs npm wafw00f arp-scan golang mariadb-client mariadb-server eom liblapack3 python-numpy # sqlite3
 sudo apt --fix-broken install
 #wget http://ftp.us.debian.org/debian/pool/main/p/python-mysqldb/python-mysqldb_1.3.10-2_amd64.deb
 #sudo dpkg -i python-mysqldb_1.3.10-2_amd64.deb
@@ -40,7 +40,7 @@ fi
 echo -e "${RED}"
 echo -e "Starting Download & Update of external dependancies.\nThis will take some time"
 echo -e "${YLW}When ready please hit ${UPURPLE}enter${NC}"
-read INSTALL_PROMPT
+#read INSTALL_PROMPT
 #######################################__Python2 Tools__#######################################################
 #
 ## Python2 Pip Install Fix
