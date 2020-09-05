@@ -63,17 +63,17 @@ jobs:
             sudo git clone -b circleci-project-setup https://github.com/s1l3nt78/sifter /opt/sifter                   # Branch Specifically Designed for CircleCI Build
 
 
-      - run:
-          name: Install Arguments Replaced (Stop build errors[CircleCI ONLY])
-          command: |
-            cd /opt/sifter
-            OUT='read INSTALL_PROMPT'                                                                                 # Original Dependancy Installion Validation Argument
-            INS='#read INSTALL_PROMPT'                                                                                # CircleCI Automatic Installation Acceptance
-            sudo sed -i "s/${OUT}/${INS}/g" install.sh
+  #    - run:
+  #        name: Install Arguments Replaced (Stop build errors[CircleCI ONLY])
+  #        command: |
+  #          cd /opt/sifter
+  #          OUT='read INSTALL_PROMPT'                                                                                 # Original Dependancy Installion Validation Argument
+  #          INS='#read INSTALL_PROMPT'                                                                                # CircleCI Automatic Installation Acceptance
+  #          sudo sed -i "s/${OUT}/${INS}/g" install.sh
 
-            OSOUT='read INOPT'                                                                                        # Osmedeus Install Option Argument
-            OSIN='l | read INOPT'                                                                                     # Osmedeus Install Option Set to 'First-Run Install'
-            sudo sed -i "s/${OSOUT}/${OSIN}/g" install.sh
+   #         OSOUT='read INOPT'                                                                                        # Osmedeus Install Option Argument
+   #         OSIN='l | read INOPT'                                                                                     # Osmedeus Install Option Set to 'First-Run Install'
+   #         sudo sed -i "s/${OSOUT}/${OSIN}/g" install.sh
 
 
       - run:
@@ -83,9 +83,9 @@ jobs:
             pip2 install --upgrade pip
             sudo pip2 install setuptools wheel
 
-      - run:
-          name: Run Sifter Installation
-          command: sudo bash /opt/sifter/install.sh
+    #  - run:
+     #     name: Run Sifter Installation
+     #     command: sudo bash /opt/sifter/install.sh
 
       - run:
           name: Sifter (Runtime - Install Check)
