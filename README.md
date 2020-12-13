@@ -14,6 +14,9 @@
 </p>
 
 # *Sifter*
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d36ac795cd14804b9ba24a06f94eef1)](https://app.codacy.com/gh/s1l3nt78/sifter?utm_source=github.com&utm_medium=referral&utm_content=s1l3nt78/sifter&utm_campaign=Badge_Grade)
+
 <strong><em>s1l3nt78</em></strong>
 <br>
 <strong><em>~The Dead Bunny Collective~</em></strong>
